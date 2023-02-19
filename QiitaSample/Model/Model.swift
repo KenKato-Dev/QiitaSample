@@ -22,12 +22,12 @@ extension ModelError:LocalizedError{
     }
 }
 protocol ModelProtocol {
-    func fetch (_ pageNo:Int,_ perPageNo:Int)async throws ->Qiita
+    func fetch ()async throws ->Qiita
 }
 final class Model:ModelProtocol{
     private var urlString:String = "https://qiita.com/api/v2/items?page=1&per_page=10"
     
-    func fetch (_ pageNo:Int,_ perPageNo:Int)async throws ->Qiita{
+    func fetch ()async throws ->Qiita{
         var qiitaArray:[QiitaData] = []
         guard let apiURL = URL(string: urlString) else {
             throw ModelError.invalidURL

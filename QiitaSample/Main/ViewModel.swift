@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import UIKit
+
 enum StateOfViewModel{
     case loading
     case loaded
@@ -15,7 +17,8 @@ enum StateOfViewModel{
 enum ViewModelError:Error{
     case failedFetch
     case failedUnwrap
-    case invaildNextURL
+    case invaildURL
+    case failedGeneratingImage
 }
 extension ViewModelError:LocalizedError{
     var localizedDescription:String{
@@ -24,8 +27,10 @@ extension ViewModelError:LocalizedError{
             return "Fetch処理に失敗しました"
         case .failedUnwrap:
             return "アンラップに失敗しました"
-        case .invaildNextURL:
-            return "次ページのURLが無効です"
+        case .invaildURL:
+            return "URLが無効です"
+        case .failedGeneratingImage:
+            return "Imageの生成に失敗しました"
         }
     }
 }
@@ -37,14 +42,15 @@ final class ViewModel{
         self.model = model
     }
     func fetchQiita() async throws{
+        stateOfViewModel = .loading
         do{
-            stateOfViewModel = .loading
-            let receivedQiita = try await model.fetch(1, 10)
-            qiita?.dataArray.append(contentsOf: receivedQiita.dataArray)
+            let receivedQiita = try await model.fetch()
+            receivedQiita.dataArray.forEach{qiita?.dataArray.insert($0)}
             qiita?.responseLinks = receivedQiita.responseLinks
             stateOfViewModel = .loaded
         }catch{
             stateOfViewModel = .error(error.localizedDescription)
+            throw error
         }
     }
     func pagination()async throws{
@@ -53,7 +59,18 @@ final class ViewModel{
         if nextURLString.contains("https://qiita.com/api/v2/items?page="){
             model.updateURL(nextURLString)
         }else{
-            throw ViewModelError.invaildNextURL
+            stateOfViewModel = .error(ViewModelError.invaildURL.localizedDescription)
+            throw ViewModelError.invaildURL
+        }
+    }
+    func returnImageFromURL(urlString:String) throws->UIImage{
+        guard let url = URL(string: urlString) else{throw ViewModelError.invaildURL }
+        do{
+            let data = try Data(contentsOf: url)
+            guard let image = UIImage(data: data) else{throw ViewModelError.failedGeneratingImage}
+            return image
+        }catch{
+            throw error
         }
     }
 }

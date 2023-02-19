@@ -7,10 +7,10 @@
 
 import Foundation
 struct Qiita{
-    var dataArray:[QiitaData]
+    var dataArray:Set<QiitaData>
     var responseLinks:[responseLink]
 }
-struct QiitaData: Decodable{
+struct QiitaData: Decodable,Hashable,Equatable{
     let title:String
     let id :String
 //    let coediting:Bool
@@ -29,7 +29,7 @@ struct QiitaData: Decodable{
     }
 }
 
-struct User:Decodable {
+struct User:Decodable,Hashable,Equatable {
     let name:String
     let profileImage:String
     enum CodingKeys: String, CodingKey{
@@ -38,7 +38,7 @@ struct User:Decodable {
     }
 }
 
-struct Tag:Decodable {
+struct Tag:Decodable,Hashable,Equatable {
     let name:String
     let versions:[String]
 }
