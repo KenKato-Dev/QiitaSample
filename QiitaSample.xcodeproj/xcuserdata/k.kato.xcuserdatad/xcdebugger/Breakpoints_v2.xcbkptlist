@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "84EBB891-BF84-4ABE-813E-1EC15BE0F303"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3EB51C92-A14F-4CB0-B360-56316E214299"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QiitaSample/Model.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "fetch(_:_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3F0408CE-2C19-4E3B-9A76-AD89B6657B8B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QiitaSampleTests/QiitaSampleTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "test_fetchFunction()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3F0408CE-2C19-4E3B-9A76-AD89B6657B8B - 45087b223c037b6a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async throws -&gt; () in closure #1 (Swift.Int) -&gt; () in QiitaSampleTests.QiitaSampleTests.test_fetchFunction() -&gt; ()"
+                  moduleName = "QiitaSampleTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/k.kato/Documents/Training50/QiitaSample/QiitaSampleTests/QiitaSampleTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "49"
+                  endingLineNumber = "49"
+                  offsetFromSymbolStart = "216">
+               </Location>
+               <Location
+                  uuid = "3F0408CE-2C19-4E3B-9A76-AD89B6657B8B - 465c1ebf8c99d5c0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async throws -&gt; () in closure #1 (Swift.Int) -&gt; () in QiitaSampleTests.QiitaSampleTests.test_fetchFunction() async -&gt; ()"
+                  moduleName = "QiitaSampleTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/k.kato/Documents/Training50/QiitaSample/QiitaSampleTests/QiitaSampleTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "50"
+                  endingLineNumber = "50"
+                  offsetFromSymbolStart = "216">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
