@@ -13,6 +13,7 @@ class QiitaTableViewCell: UITableViewCell {
     @IBOutlet weak var body: UILabel!
     @IBOutlet weak var createdDay: UILabel!
     @IBOutlet weak var title: UILabel!
+    static let id = "QiitaTableViewCell"
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,5 +25,8 @@ class QiitaTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    static func nib() -> UINib {
+        return UINib(nibName: QiitaTableViewCell.id, bundle: nil)
+        }
     
 }

@@ -36,7 +36,8 @@ extension ViewModelError:LocalizedError{
 }
 final class ViewModel{
     @Published private (set) var stateOfViewModel:StateOfViewModel?
-    private (set) var qiita:Qiita?
+    private (set) var qiita = Qiita(dataArray: [], responseLinks: [])
+//    @Published private (set) var qiita:Qiita
     private let model :Model
     init(model: Model) {
         self.model = model
@@ -45,8 +46,8 @@ final class ViewModel{
         stateOfViewModel = .loading
         do{
             let receivedQiita = try await model.fetch()
-            receivedQiita.dataArray.forEach{qiita?.dataArray.insert($0)}
-            qiita?.responseLinks = receivedQiita.responseLinks
+            receivedQiita.dataArray.forEach{qiita.dataArray.insert($0)}
+            qiita.responseLinks = receivedQiita.responseLinks
             stateOfViewModel = .loaded
         }catch{
             stateOfViewModel = .error(error.localizedDescription)
@@ -54,7 +55,7 @@ final class ViewModel{
         }
     }
     func pagination()async throws{
-        guard let qiita = qiita else{throw ViewModelError.failedUnwrap}
+//        guard let qiita = qiita else{throw ViewModelError.failedUnwrap}
         let nextURLString = qiita.responseLinks.filter{$0.relation == "next"}[0].urlString
         if nextURLString.contains("https://qiita.com/api/v2/items?page="){
             model.updateURL(nextURLString)

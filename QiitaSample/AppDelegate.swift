@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         Task{
             do{
-                let fetchcontents = try await Model().fetch(1, 1)
+                let fetchcontents = try await Model().fetch()
                 var next = fetchcontents.responseLinks.filter{$0.relation == "next"}
                 print("nextURL:\(next[0].urlString)")
                 print(fetchcontents)

@@ -28,14 +28,25 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
+        self.binding()
+        self.tableView.register(QiitaTableViewCell.nib(), forCellReuseIdentifier: QiitaTableViewCell.id)
         // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        guard let indexPath = tableView.indexPathForSelectedRow else {return}
+//        tableView.deselectRow(at: indexPath, animated: true)
+        Task{
+            try await viewModel.fetchQiita()
+        }
+        tableView.reloadData()
     }
 
 
 }
 extension ViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        <#code#>
+//        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 extension ViewController{
@@ -48,6 +59,7 @@ extension ViewController{
                 case .loading:
                     print("")
                 case .loaded:
+                    self?.apply()
                     print("")
                 case let .error(message):
                     print(message)
@@ -55,8 +67,8 @@ extension ViewController{
             }.store(in: &cancellable)
         datasource = UITableViewDiffableDataSource(
             tableView: tableView,
-            cellProvider: { [weak self]tableView, indexPath, itemIdentifier in
-                <#code#>
+            cellProvider: { [weak self]tableView, indexPath, item in
+                self?.providedCell(tableView, at: indexPath, item: item)
             })
         Task{
             do{
@@ -65,18 +77,34 @@ extension ViewController{
                 print(error.localizedDescription)
             }
         }
+        apply()
     }
     func apply() {
-        <#function body#>
+        var snapshot = NSDiffableDataSourceSnapshot<Int, QiitaData>()
+        snapshot.appendSections([0])
+        snapshot.appendItems(Array(viewModel.qiita.dataArray), toSection: 0)
+        self.datasource?.defaultRowAnimation = .fade
+        if let datasource{
+            datasource.apply(snapshot, animatingDifferences: true)
+        }else{
+            datasource?.applySnapshotUsingReloadData(snapshot)
+        }
     }
     func providedCell(_ tableView:UITableView, at indexPath:IndexPath, item:QiitaData)->UITableViewCell{
-        let identifier = "QiitaDataCell"
+        let identifier = "QiitaTableViewCell"
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: identifier,
             for: indexPath
         ) as? QiitaTableViewCell else {return UITableViewCell()}
         cell.title.text = item.title
         cell.createdDay.text = item.createdAt
-        cell.profileImage
+        do{
+            cell.profileImage.image = try viewModel.returnImageFromURL(urlString: item.user.profileImage)
+        }catch{
+            print(error.localizedDescription)
+        }
+        cell.body.text = item.body
+        
+        return cell
     }
 }
