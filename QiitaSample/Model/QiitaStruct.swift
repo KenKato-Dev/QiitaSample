@@ -7,7 +7,7 @@
 
 import Foundation
 struct Qiita{
-    var dataArray:Set<QiitaData>
+    var dataArray:[QiitaData]
     var responseLinks:[responseLink]
 }
 struct QiitaData: Decodable,Hashable,Equatable{
@@ -20,14 +20,14 @@ struct QiitaData: Decodable,Hashable,Equatable{
     let user:User
     let tags:[Tag]
     enum CodingKeys:String,CodingKey{
-        case title = "title"
-        case id = "id"
-        case body = "body"
+        case title
+        case id
+        case body
 //        case coediting = "coediting"
-        case url="url"
+        case url
         case createdAt="created_at"
-        case user = "user"
-        case tags = "tags"
+        case user
+        case tags
     }
 }
 
@@ -35,7 +35,7 @@ struct User:Decodable,Hashable,Equatable {
     let name:String
     let profileImage:String
     enum CodingKeys: String, CodingKey{
-        case name = "name"
+        case name
         case profileImage = "profile_image_url"
     }
 }

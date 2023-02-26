@@ -11,16 +11,16 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        Task{
-            do{
-                let fetchcontents = try await Model().fetch()
-                var next = fetchcontents.responseLinks.filter{$0.relation == "next"}
-                print("nextURL:\(next[0].urlString)")
-                print(fetchcontents)
-            }catch{
-                print(error.localizedDescription)
-            }
-        }
+//        Task{
+//            do{
+//                let fetchcontents = try await Model().fetch()
+//                let next = fetchcontents.responseLinks.filter{$0.relation == "next"}
+//                print("nextURL:\(next[0].urlString)")
+//                print(fetchcontents)
+//            }catch{
+//                print(error.localizedDescription)
+//            }
+//        }
         
         return true
     }

@@ -6,3 +6,12 @@
 //
 
 import Foundation
+import WebKit
+final class DetailedViewModel{
+    
+    func loadWebView(_ urlString:String, webView:WKWebView) throws{
+        guard let url = URL(string: urlString) else {throw DetailedViewError.invaildURL}
+        let request = URLRequest(url: url)
+        webView.load(request)
+    }
+}

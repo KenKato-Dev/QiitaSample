@@ -6,24 +6,39 @@
 //
 
 import UIKit
+import WebKit
+enum DetailedViewError:Error{
+    case invaildURL
+}
+extension DetailedViewError:LocalizedError{
+    var localizedDescription:String{
+        switch self{
+        case .invaildURL:
+            return "URLが無効です"
 
+        }
+    }
+}
 class DetailedViewController: UIViewController {
 
+    @IBOutlet weak var webView: WKWebView!
+    private let detailedViewModel = DetailedViewModel()
+    var urlString:String = ""
+    
+//    override func loadView() {
+//        super.loadView()
+//        let webConfigration = WKWebViewConfiguration()
+//        webView.uiDelegate = self
+//        webView.navigationDelegate = self
+//        self.view = webView
+//    }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        do{
+           try self.detailedViewModel.loadWebView(urlString, webView: self.webView)
+        }catch{
+            print(error.localizedDescription)
+        }
         // Do any additional setup after loading the view.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

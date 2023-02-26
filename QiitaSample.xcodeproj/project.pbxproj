@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EC33573829A64AE300E8E9EC /* DetailedView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC33573729A64AE300E8E9EC /* DetailedView.storyboard */; };
 		ECAAD0BB299CF5B20061F08E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAAD0BA299CF5B20061F08E /* AppDelegate.swift */; };
 		ECAAD0BD299CF5B20061F08E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAAD0BC299CF5B20061F08E /* SceneDelegate.swift */; };
 		ECAAD0BF299CF5B20061F08E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAAD0BE299CF5B20061F08E /* ViewController.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EC33573729A64AE300E8E9EC /* DetailedView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailedView.storyboard; sourceTree = "<group>"; };
 		ECAAD0B7299CF5B20061F08E /* QiitaSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QiitaSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECAAD0BA299CF5B20061F08E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECAAD0BC299CF5B20061F08E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 			children = (
 				ECFA75C229A1F9D100753617 /* DetailedViewController.swift */,
 				ECFA75C429A1F9E700753617 /* DetailedViewModel.swift */,
+				EC33573729A64AE300E8E9EC /* DetailedView.storyboard */,
 			);
 			path = Detailed;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECAAD0C7299CF5B40061F08E /* LaunchScreen.storyboard in Resources */,
+				EC33573829A64AE300E8E9EC /* DetailedView.storyboard in Resources */,
 				ECAAD0C4299CF5B40061F08E /* Assets.xcassets in Resources */,
 				ECAAD0C2299CF5B20061F08E /* Main.storyboard in Resources */,
 				ECFA75B9299E5F3D00753617 /* QiitaTableViewCell.xib in Resources */,

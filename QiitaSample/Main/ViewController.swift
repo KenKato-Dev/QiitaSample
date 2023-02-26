@@ -27,6 +27,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.backButtonTitle = ""
         self.tableView.delegate = self
         self.binding()
         self.tableView.register(QiitaTableViewCell.nib(), forCellReuseIdentifier: QiitaTableViewCell.id)
@@ -34,19 +35,42 @@ class ViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        guard let indexPath = tableView.indexPathForSelectedRow else {return}
-//        tableView.deselectRow(at: indexPath, animated: true)
-        Task{
-            try await viewModel.fetchQiita()
-        }
-        tableView.reloadData()
+        //選択後戻った際に
+        guard let indexPath = tableView.indexPathForSelectedRow else {return}
+        tableView.deselectRow(at: indexPath, animated: true)
+//        Task{
+//            try await viewModel.fetchQiita()
+//        }
+//        tableView.reloadData()
     }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "toDetailedView" {
+//            if let detailedView = segue.destination as? DetailedViewController{
+//                detailedView.navigationItem.title = String("\(sender!)")
+//                print(detailedView.navigationItem.title!.isEmpty)
+//            }else{
+//
+//            }
+//        }
+//    }
 
 
 }
 extension ViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        tableView.deselectRow(at: indexPath, animated: true)
+        let detailedView = UIStoryboard(name: "DetailedView", bundle: nil).instantiateViewController(withIdentifier: "DetailedView") as! DetailedViewController
+        detailedView.urlString = self.viewModel.qiita.dataArray[indexPath.row].url
+        self.navigationController?.pushViewController(detailedView, animated: true)
+        
+    }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        Task{
+            do{
+                try viewModel.pagination(row: indexPath.row)
+            }catch{
+                print(error.localizedDescription)
+            }
+        }
     }
 }
 extension ViewController{
@@ -82,7 +106,7 @@ extension ViewController{
     func apply() {
         var snapshot = NSDiffableDataSourceSnapshot<Int, QiitaData>()
         snapshot.appendSections([0])
-        snapshot.appendItems(Array(viewModel.qiita.dataArray), toSection: 0)
+        snapshot.appendItems(viewModel.qiita.dataArray, toSection: 0)
         self.datasource?.defaultRowAnimation = .fade
         if let datasource{
             datasource.apply(snapshot, animatingDifferences: true)
@@ -98,13 +122,14 @@ extension ViewController{
         ) as? QiitaTableViewCell else {return UITableViewCell()}
         cell.title.text = item.title
         cell.createdDay.text = item.createdAt
-        do{
-            cell.profileImage.image = try viewModel.returnImageFromURL(urlString: item.user.profileImage)
-        }catch{
-            print(error.localizedDescription)
+        Task{
+            do{
+                cell.profileImage.image = try await viewModel.returnImageFromURL(urlString: item.user.profileImage)
+            }catch{
+                print(error.localizedDescription)
+            }
         }
         cell.body.text = item.body
-        
         return cell
     }
 }

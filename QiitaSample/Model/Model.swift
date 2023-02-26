@@ -63,7 +63,7 @@ final class Model:ModelProtocol{
             responseArray.append(responseLink(urlString: url, relation: rel))
         }
 //        print(responseArray)
-        return Qiita(dataArray: Set(qiitaArray), responseLinks: responseArray)
+        return Qiita(dataArray: qiitaArray, responseLinks: responseArray)
     }
     
     func updateURL(_ nextURLstring:String){

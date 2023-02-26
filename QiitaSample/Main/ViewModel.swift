@@ -19,6 +19,7 @@ enum ViewModelError:Error{
     case failedUnwrap
     case invaildURL
     case failedGeneratingImage
+    case invaildData
 }
 extension ViewModelError:LocalizedError{
     var localizedDescription:String{
@@ -31,6 +32,8 @@ extension ViewModelError:LocalizedError{
             return "URLが無効です"
         case .failedGeneratingImage:
             return "Imageの生成に失敗しました"
+        case .invaildData:
+            return "得られたdataが無効です"
         }
     }
 }
@@ -46,7 +49,7 @@ final class ViewModel{
         stateOfViewModel = .loading
         do{
             let receivedQiita = try await model.fetch()
-            receivedQiita.dataArray.forEach{qiita.dataArray.insert($0)}
+            qiita.dataArray.append(contentsOf:  receivedQiita.dataArray)
             qiita.responseLinks = receivedQiita.responseLinks
             stateOfViewModel = .loaded
         }catch{
@@ -54,24 +57,27 @@ final class ViewModel{
             throw error
         }
     }
-    func pagination()async throws{
+    func pagination(row:Int) throws{
 //        guard let qiita = qiita else{throw ViewModelError.failedUnwrap}
         let nextURLString = qiita.responseLinks.filter{$0.relation == "next"}[0].urlString
-        if nextURLString.contains("https://qiita.com/api/v2/items?page="){
+        if row == qiita.dataArray.count - 1, nextURLString.contains("https://qiita.com/api/v2/items?page="){
             model.updateURL(nextURLString)
+            Task{
+                try await self.fetchQiita()
+            }
         }else{
             stateOfViewModel = .error(ViewModelError.invaildURL.localizedDescription)
             throw ViewModelError.invaildURL
         }
     }
-    func returnImageFromURL(urlString:String) throws->UIImage{
+    func returnImageFromURL(urlString:String) async throws->UIImage{
         guard let url = URL(string: urlString) else{throw ViewModelError.invaildURL }
-        do{
-            let data = try Data(contentsOf: url)
-            guard let image = UIImage(data: data) else{throw ViewModelError.failedGeneratingImage}
-            return image
-        }catch{
-            throw error
-        }
+        let request = URLRequest(url: url)
+        let (data, _) = try await URLSession.shared.data(for: request)
+        guard let image = UIImage(data: data) else{throw ViewModelError.failedGeneratingImage}
+        return image
+        ///error
+        ///Synchronous URL loading of https://lh3.googleusercontent.com/a-/AOh14GiHDumucs3o6fmzfrEsScv2xRCHlOlUpn5zNq5u=s50 should not occur on this application's main thread as it may lead to UI unresponsiveness. Please switch to an asynchronous networking API such as URLSession.
     }
+    
 }

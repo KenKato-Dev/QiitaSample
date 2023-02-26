@@ -10,57 +10,27 @@ import XCTest
 
 final class QiitaSampleTests: XCTestCase {
     private var mock = ModelMock()
-    
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        
-        
-    }
-    
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-    
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-    
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    func test_fetchFunction() async {
-        ///error:'async' call in a function that does not support concurrency
-        ///Call can throw, but it is not marked with 'try' and the error is not handled
-        ///書き方わからず、本当は1〜5まで自動的に値を入れてそれを
+    private let exp = XCTestExpectation(description: "test実行")
 
-        let numbers = 1...5
-//        var qiita:Qiita = Qiita(dataArray: [], responseLinks: [])
-        numbers.forEach{ number in
-            Task{
-                let qiitaresult = try await mock.fetch(1, number)
-                //                    print("array:\(qiita.dataArray)")
-//                qiita = qiitaresult
-                XCTAssertEqual(qiitaresult.dataArray.count, number)
-            }
-            }
-            
-//        Task{
-//            var array = try await mock.fetch(1)
-//            XCTAssertEqual(array.count, 1)
+    func test_fetch機能() async {
+        let numbers = 1...3
+//        numbers.forEach{ number in
+        let random = numbers.randomElement()!
+                do{
+                    let qiitaresult = try await mock.test_fetch動作(1, random)
+                    XCTAssertEqual(qiitaresult.dataArray.count, random)
+                    print("取り出し成功")
+                    self.exp.fulfill()
+                }catch{
+                    print(error.localizedDescription)
+                    XCTAssertThrowsError(error)
+                    self.exp.fulfill()
+                }
 //        }
-        
+        wait(for: [exp], timeout: 3.0)
     }
-    class ModelMock: ModelProtocol {
-        
-        
-        func fetch (_ pageNo:Int,_ perPageNo:Int)async throws ->Qiita{
+    class ModelMock {
+        func test_fetch動作 (_ pageNo:Int,_ perPageNo:Int)async throws ->Qiita{
             var qiitaArray:[QiitaData] = []
             let qiitaAPI = "https://qiita.com/api/v2/items?page=\(pageNo)&per_page=\(perPageNo)"
             guard let apiURL = URL(string: qiitaAPI) else {
