@@ -7,16 +7,7 @@
 
 import UIKit
 import Combine
-enum Sections { //
-case page(Int)
-    var swctionstring:String{
-        switch self{
-            
-        case let .page(int):
-            return "\(int)ページ"
-        }
-    }
-}
+
 
 class ViewController: UIViewController {
     private var cancellable = Set<AnyCancellable>()
@@ -24,37 +15,21 @@ class ViewController: UIViewController {
     typealias Snapshot = NSDiffableDataSourceSnapshot<Int, QiitaData>
     private var datasource :UITableViewDiffableDataSource<Int, QiitaData>?
     @IBOutlet weak var tableView: UITableView!
+    private var indicatorBackView = UIView()
+    private let activityIndicator = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.backButtonTitle = ""
         self.tableView.delegate = self
         self.binding()
         self.tableView.register(QiitaTableViewCell.nib(), forCellReuseIdentifier: QiitaTableViewCell.id)
-        // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //選択後戻った際に
+        //選択後戻った際に選択したcellを表示
         guard let indexPath = tableView.indexPathForSelectedRow else {return}
         tableView.deselectRow(at: indexPath, animated: true)
-//        Task{
-//            try await viewModel.fetchQiita()
-//        }
-//        tableView.reloadData()
     }
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "toDetailedView" {
-//            if let detailedView = segue.destination as? DetailedViewController{
-//                detailedView.navigationItem.title = String("\(sender!)")
-//                print(detailedView.navigationItem.title!.isEmpty)
-//            }else{
-//
-//            }
-//        }
-//    }
-
-
 }
 extension ViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -81,12 +56,13 @@ extension ViewController{
                 guard let stateOfViewModel = stateOfViewModel else{return}
                 switch stateOfViewModel{
                 case .loading:
-                    print("")
+                    self?.showIndicator()
                 case .loaded:
                     self?.apply()
-                    print("")
+                    self?.hideIndicator(true)
                 case let .error(message):
-                    print(message)
+                    self?.hideIndicator(true)
+                    self?.showErrorMessageIfNeeded(message)
                 }
             }.store(in: &cancellable)
         datasource = UITableViewDiffableDataSource(
@@ -122,6 +98,8 @@ extension ViewController{
         ) as? QiitaTableViewCell else {return UITableViewCell()}
         cell.title.text = item.title
         cell.createdDay.text = item.createdAt
+        cell.userName.text = item.user.name
+        cell.userName.adjustsFontSizeToFitWidth = true
         Task{
             do{
                 cell.profileImage.image = try await viewModel.returnImageFromURL(urlString: item.user.profileImage)
@@ -131,5 +109,27 @@ extension ViewController{
         }
         cell.body.text = item.body
         return cell
+    }
+    private func showErrorMessageIfNeeded(_ message: String) {
+        let alert = UIAlertController(title: "エラー", message: message, preferredStyle: .alert)
+        alert.addAction(.init(title: "閉じる", style: .default))
+        present(alert, animated: true)
+    }
+    private func showIndicator() {
+        indicatorBackView = UIView(frame: view.bounds)
+        indicatorBackView.backgroundColor = .white
+        indicatorBackView.alpha = 0.5
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = .large
+        activityIndicator.color = .gray
+        activityIndicator.center = view.center
+        view.addSubview(indicatorBackView)
+        indicatorBackView.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+    }
+
+    private func hideIndicator(_ isHidden: Bool) {
+        activityIndicator.isHidden = isHidden
+        indicatorBackView.isHidden = isHidden
     }
 }

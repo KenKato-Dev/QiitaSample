@@ -18,8 +18,10 @@ enum ViewModelError:Error{
     case failedFetch
     case failedUnwrap
     case invaildURL
+    case invaildImageURL
     case failedGeneratingImage
     case invaildData
+    case nothingNext
 }
 extension ViewModelError:LocalizedError{
     var localizedDescription:String{
@@ -30,17 +32,20 @@ extension ViewModelError:LocalizedError{
             return "アンラップに失敗しました"
         case .invaildURL:
             return "URLが無効です"
+        case .invaildImageURL:
+            return "画像URLが無効です"
         case .failedGeneratingImage:
             return "Imageの生成に失敗しました"
         case .invaildData:
             return "得られたdataが無効です"
+        case .nothingNext:
+            return "次のページがありません"
         }
     }
 }
 final class ViewModel{
     @Published private (set) var stateOfViewModel:StateOfViewModel?
     private (set) var qiita = Qiita(dataArray: [], responseLinks: [])
-//    @Published private (set) var qiita:Qiita
     private let model :Model
     init(model: Model) {
         self.model = model
@@ -58,16 +63,20 @@ final class ViewModel{
         }
     }
     func pagination(row:Int) throws{
-//        guard let qiita = qiita else{throw ViewModelError.failedUnwrap}
         let nextURLString = qiita.responseLinks.filter{$0.relation == "next"}[0].urlString
-        if row == qiita.dataArray.count - 1, nextURLString.contains("https://qiita.com/api/v2/items?page="){
-            model.updateURL(nextURLString)
-            Task{
-                try await self.fetchQiita()
+        if nextURLString.isEmpty{
+            throw ViewModelError.nothingNext
+        }
+        if row == qiita.dataArray.count - 1 {
+            if nextURLString.contains("https://qiita.com/api/v2/items?page="){
+                model.updateURL(nextURLString)
+                Task{
+                    try await self.fetchQiita()
+                }
+            }else{
+                stateOfViewModel = .error(ViewModelError.invaildURL.localizedDescription)
+                throw ViewModelError.invaildURL
             }
-        }else{
-            stateOfViewModel = .error(ViewModelError.invaildURL.localizedDescription)
-            throw ViewModelError.invaildURL
         }
     }
     func returnImageFromURL(urlString:String) async throws->UIImage{

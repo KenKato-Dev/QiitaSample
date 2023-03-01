@@ -25,7 +25,7 @@ protocol ModelProtocol {
     func fetch ()async throws ->Qiita
 }
 final class Model:ModelProtocol{
-    private var urlString:String = "https://qiita.com/api/v2/items?page=1&per_page=10"
+    private var urlString:String = "https://qiita.com/api/v2/items?page=1&per_page=20"
     
     func fetch ()async throws ->Qiita{
         var qiitaArray:[QiitaData] = []

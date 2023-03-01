@@ -99,8 +99,7 @@
 				ECFA75C029A1F98300753617 /* Main */,
 				ECFA75C129A1F9A900753617 /* Detailed */,
 				ECFA75BF29A1F96E00753617 /* Model */,
-				ECFA75B6299E5F3D00753617 /* QiitaTableViewCell.swift */,
-				ECFA75B7299E5F3D00753617 /* QiitaTableViewCell.xib */,
+				ECCF8C3029AF673100764E43 /* Cell */,
 				ECAAD0C0299CF5B20061F08E /* Main.storyboard */,
 				ECAAD0C3299CF5B40061F08E /* Assets.xcassets */,
 				ECAAD0C5299CF5B40061F08E /* LaunchScreen.storyboard */,
@@ -115,6 +114,15 @@
 				ECAAD0D6299E41690061F08E /* QiitaSampleTests.swift */,
 			);
 			path = QiitaSampleTests;
+			sourceTree = "<group>";
+		};
+		ECCF8C3029AF673100764E43 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				ECFA75B6299E5F3D00753617 /* QiitaTableViewCell.swift */,
+				ECFA75B7299E5F3D00753617 /* QiitaTableViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		ECFA75BF29A1F96E00753617 /* Model */ = {

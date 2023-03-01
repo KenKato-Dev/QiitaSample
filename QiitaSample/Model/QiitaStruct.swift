@@ -23,7 +23,6 @@ struct QiitaData: Decodable,Hashable,Equatable{
         case title
         case id
         case body
-//        case coediting = "coediting"
         case url
         case createdAt="created_at"
         case user
@@ -44,10 +43,6 @@ struct Tag:Decodable,Hashable,Equatable {
     let name:String
     let versions:[String]
 }
-//enum Relation:String {
-//case next
-//case none
-//}
 struct responseLink{
     let urlString:String
     let relation:String

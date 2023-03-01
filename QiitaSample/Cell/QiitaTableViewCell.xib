@@ -63,6 +63,7 @@
                     </stackView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sUw-WB-T1s">
                         <rect key="frame" x="0.0" y="35.666666666666664" width="50" height="14.333333333333336"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
