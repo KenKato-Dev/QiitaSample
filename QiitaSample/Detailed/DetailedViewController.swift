@@ -35,9 +35,8 @@ class DetailedViewController: UIViewController {
         do{
            try self.detailedViewModel.loadWebView(urlString, webView: self.webView)
         }catch{
-            print(error.localizedDescription)
+            self.showErrorMessageIfNeeded(error.localizedDescription)
         }
-        // Do any additional setup after loading the view.
     }
 }
 extension DetailedViewController{

@@ -43,7 +43,7 @@ extension ViewController:UITableViewDelegate{
             do{
                 try viewModel.pagination(row: indexPath.row)
             }catch{
-                print(error.localizedDescription)
+                self.showErrorMessageIfNeeded(error.localizedDescription)
             }
         }
     }
@@ -74,7 +74,7 @@ extension ViewController{
             do{
                 try await viewModel.fetchQiita()
             }catch{
-                print(error.localizedDescription)
+                self.showErrorMessageIfNeeded(error.localizedDescription)
             }
         }
         apply()
@@ -104,7 +104,7 @@ extension ViewController{
             do{
                 cell.profileImage.image = try await viewModel.returnImageFromURL(urlString: item.user.profileImage)
             }catch{
-                print(error.localizedDescription)
+                self.showErrorMessageIfNeeded(error.localizedDescription)
             }
         }
         cell.body.text = item.body
