@@ -7,21 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EC33573829A64AE300E8E9EC /* DetailedView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC33573729A64AE300E8E9EC /* DetailedView.storyboard */; };
 		ECAAD0BB299CF5B20061F08E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAAD0BA299CF5B20061F08E /* AppDelegate.swift */; };
 		ECAAD0BD299CF5B20061F08E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAAD0BC299CF5B20061F08E /* SceneDelegate.swift */; };
-		ECAAD0BF299CF5B20061F08E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAAD0BE299CF5B20061F08E /* ViewController.swift */; };
 		ECAAD0C2299CF5B20061F08E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECAAD0C0299CF5B20061F08E /* Main.storyboard */; };
 		ECAAD0C4299CF5B40061F08E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECAAD0C3299CF5B40061F08E /* Assets.xcassets */; };
 		ECAAD0C7299CF5B40061F08E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECAAD0C5299CF5B40061F08E /* LaunchScreen.storyboard */; };
-		ECAAD0CF299D00C10061F08E /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAAD0CE299D00C10061F08E /* Model.swift */; };
 		ECAAD0D7299E41690061F08E /* QiitaSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAAD0D6299E41690061F08E /* QiitaSampleTests.swift */; };
-		ECFA75B8299E5F3D00753617 /* QiitaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFA75B6299E5F3D00753617 /* QiitaTableViewCell.swift */; };
-		ECFA75B9299E5F3D00753617 /* QiitaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECFA75B7299E5F3D00753617 /* QiitaTableViewCell.xib */; };
-		ECFA75BB299F8F8700753617 /* QiitaStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFA75BA299F8F8700753617 /* QiitaStruct.swift */; };
-		ECFA75BE29A1F95400753617 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFA75BD29A1F95400753617 /* ViewModel.swift */; };
-		ECFA75C329A1F9D100753617 /* DetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFA75C229A1F9D100753617 /* DetailedViewController.swift */; };
-		ECFA75C529A1F9E800753617 /* DetailedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFA75C429A1F9E700753617 /* DetailedViewModel.swift */; };
+		ECEFA81C29B4333B00A8FC3D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEFA81029B4333B00A8FC3D /* Model.swift */; };
+		ECEFA81D29B4333B00A8FC3D /* QiitaStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEFA81129B4333B00A8FC3D /* QiitaStruct.swift */; };
+		ECEFA81E29B4333B00A8FC3D /* QiitaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECEFA81329B4333B00A8FC3D /* QiitaTableViewCell.xib */; };
+		ECEFA81F29B4333B00A8FC3D /* QiitaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEFA81429B4333B00A8FC3D /* QiitaTableViewCell.swift */; };
+		ECEFA82029B4333B00A8FC3D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEFA81629B4333B00A8FC3D /* ViewController.swift */; };
+		ECEFA82129B4333B00A8FC3D /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEFA81729B4333B00A8FC3D /* ViewModel.swift */; };
+		ECEFA82229B4333B00A8FC3D /* DetailedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEFA81929B4333B00A8FC3D /* DetailedViewModel.swift */; };
+		ECEFA82329B4333B00A8FC3D /* DetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEFA81A29B4333B00A8FC3D /* DetailedViewController.swift */; };
+		ECEFA82429B4333B00A8FC3D /* DetailedView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECEFA81B29B4333B00A8FC3D /* DetailedView.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,24 +35,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		EC33573729A64AE300E8E9EC /* DetailedView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailedView.storyboard; sourceTree = "<group>"; };
 		ECAAD0B7299CF5B20061F08E /* QiitaSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QiitaSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECAAD0BA299CF5B20061F08E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECAAD0BC299CF5B20061F08E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		ECAAD0BE299CF5B20061F08E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		ECAAD0C1299CF5B20061F08E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ECAAD0C3299CF5B40061F08E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ECAAD0C6299CF5B40061F08E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ECAAD0C8299CF5B40061F08E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ECAAD0CE299D00C10061F08E /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		ECAAD0D4299E41690061F08E /* QiitaSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QiitaSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECAAD0D6299E41690061F08E /* QiitaSampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaSampleTests.swift; sourceTree = "<group>"; };
-		ECFA75B6299E5F3D00753617 /* QiitaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaTableViewCell.swift; sourceTree = "<group>"; };
-		ECFA75B7299E5F3D00753617 /* QiitaTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QiitaTableViewCell.xib; sourceTree = "<group>"; };
-		ECFA75BA299F8F8700753617 /* QiitaStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaStruct.swift; sourceTree = "<group>"; };
-		ECFA75BD29A1F95400753617 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
-		ECFA75C229A1F9D100753617 /* DetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedViewController.swift; sourceTree = "<group>"; };
-		ECFA75C429A1F9E700753617 /* DetailedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedViewModel.swift; sourceTree = "<group>"; };
+		ECEFA81029B4333B00A8FC3D /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		ECEFA81129B4333B00A8FC3D /* QiitaStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiitaStruct.swift; sourceTree = "<group>"; };
+		ECEFA81329B4333B00A8FC3D /* QiitaTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QiitaTableViewCell.xib; sourceTree = "<group>"; };
+		ECEFA81429B4333B00A8FC3D /* QiitaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiitaTableViewCell.swift; sourceTree = "<group>"; };
+		ECEFA81629B4333B00A8FC3D /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		ECEFA81729B4333B00A8FC3D /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		ECEFA81929B4333B00A8FC3D /* DetailedViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedViewModel.swift; sourceTree = "<group>"; };
+		ECEFA81A29B4333B00A8FC3D /* DetailedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedViewController.swift; sourceTree = "<group>"; };
+		ECEFA81B29B4333B00A8FC3D /* DetailedView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DetailedView.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +77,10 @@
 			isa = PBXGroup;
 			children = (
 				ECAAD0B9299CF5B20061F08E /* QiitaSample */,
+				ECEFA81229B4333B00A8FC3D /* Cell */,
+				ECEFA81829B4333B00A8FC3D /* Detailed */,
+				ECEFA81529B4333B00A8FC3D /* Main */,
+				ECEFA80F29B4333B00A8FC3D /* Model */,
 				ECAAD0D5299E41690061F08E /* QiitaSampleTests */,
 				ECAAD0B8299CF5B20061F08E /* Products */,
 			);
@@ -96,10 +100,6 @@
 			children = (
 				ECAAD0BA299CF5B20061F08E /* AppDelegate.swift */,
 				ECAAD0BC299CF5B20061F08E /* SceneDelegate.swift */,
-				ECFA75C029A1F98300753617 /* Main */,
-				ECFA75C129A1F9A900753617 /* Detailed */,
-				ECFA75BF29A1F96E00753617 /* Model */,
-				ECCF8C3029AF673100764E43 /* Cell */,
 				ECAAD0C0299CF5B20061F08E /* Main.storyboard */,
 				ECAAD0C3299CF5B40061F08E /* Assets.xcassets */,
 				ECAAD0C5299CF5B40061F08E /* LaunchScreen.storyboard */,
@@ -116,42 +116,42 @@
 			path = QiitaSampleTests;
 			sourceTree = "<group>";
 		};
-		ECCF8C3029AF673100764E43 /* Cell */ = {
+		ECEFA80F29B4333B00A8FC3D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				ECFA75B6299E5F3D00753617 /* QiitaTableViewCell.swift */,
-				ECFA75B7299E5F3D00753617 /* QiitaTableViewCell.xib */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
-		ECFA75BF29A1F96E00753617 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				ECFA75BA299F8F8700753617 /* QiitaStruct.swift */,
-				ECAAD0CE299D00C10061F08E /* Model.swift */,
+				ECEFA81029B4333B00A8FC3D /* Model.swift */,
+				ECEFA81129B4333B00A8FC3D /* QiitaStruct.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
-		ECFA75C029A1F98300753617 /* Main */ = {
+		ECEFA81229B4333B00A8FC3D /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				ECAAD0BE299CF5B20061F08E /* ViewController.swift */,
-				ECFA75BD29A1F95400753617 /* ViewModel.swift */,
+				ECEFA81329B4333B00A8FC3D /* QiitaTableViewCell.xib */,
+				ECEFA81429B4333B00A8FC3D /* QiitaTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = SOURCE_ROOT;
+		};
+		ECEFA81529B4333B00A8FC3D /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				ECEFA81629B4333B00A8FC3D /* ViewController.swift */,
+				ECEFA81729B4333B00A8FC3D /* ViewModel.swift */,
 			);
 			path = Main;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
-		ECFA75C129A1F9A900753617 /* Detailed */ = {
+		ECEFA81829B4333B00A8FC3D /* Detailed */ = {
 			isa = PBXGroup;
 			children = (
-				ECFA75C229A1F9D100753617 /* DetailedViewController.swift */,
-				ECFA75C429A1F9E700753617 /* DetailedViewModel.swift */,
-				EC33573729A64AE300E8E9EC /* DetailedView.storyboard */,
+				ECEFA81929B4333B00A8FC3D /* DetailedViewModel.swift */,
+				ECEFA81A29B4333B00A8FC3D /* DetailedViewController.swift */,
+				ECEFA81B29B4333B00A8FC3D /* DetailedView.storyboard */,
 			);
 			path = Detailed;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -235,10 +235,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECAAD0C7299CF5B40061F08E /* LaunchScreen.storyboard in Resources */,
-				EC33573829A64AE300E8E9EC /* DetailedView.storyboard in Resources */,
+				ECEFA82429B4333B00A8FC3D /* DetailedView.storyboard in Resources */,
 				ECAAD0C4299CF5B40061F08E /* Assets.xcassets in Resources */,
+				ECEFA81E29B4333B00A8FC3D /* QiitaTableViewCell.xib in Resources */,
 				ECAAD0C2299CF5B20061F08E /* Main.storyboard in Resources */,
-				ECFA75B9299E5F3D00753617 /* QiitaTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,15 +256,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECAAD0BF299CF5B20061F08E /* ViewController.swift in Sources */,
-				ECFA75BB299F8F8700753617 /* QiitaStruct.swift in Sources */,
-				ECFA75C329A1F9D100753617 /* DetailedViewController.swift in Sources */,
-				ECFA75C529A1F9E800753617 /* DetailedViewModel.swift in Sources */,
+				ECEFA82029B4333B00A8FC3D /* ViewController.swift in Sources */,
+				ECEFA81C29B4333B00A8FC3D /* Model.swift in Sources */,
+				ECEFA82229B4333B00A8FC3D /* DetailedViewModel.swift in Sources */,
+				ECEFA81D29B4333B00A8FC3D /* QiitaStruct.swift in Sources */,
+				ECEFA81F29B4333B00A8FC3D /* QiitaTableViewCell.swift in Sources */,
+				ECEFA82329B4333B00A8FC3D /* DetailedViewController.swift in Sources */,
 				ECAAD0BB299CF5B20061F08E /* AppDelegate.swift in Sources */,
-				ECFA75B8299E5F3D00753617 /* QiitaTableViewCell.swift in Sources */,
 				ECAAD0BD299CF5B20061F08E /* SceneDelegate.swift in Sources */,
-				ECAAD0CF299D00C10061F08E /* Model.swift in Sources */,
-				ECFA75BE29A1F95400753617 /* ViewModel.swift in Sources */,
+				ECEFA82129B4333B00A8FC3D /* ViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,8 +17,13 @@ final class QiitaSampleTests: XCTestCase {
 //        numbers.forEach{ number in
         let random = numbers.randomElement()!
                 do{
-                    let qiitaresult = try await mock.test_fetch動作(1, random)
+                    let qiitaresult = try await mock.test_fetch動作(random, random)
                     XCTAssertEqual(qiitaresult.dataArray.count, random)
+                    if random != 1{
+                        XCTAssertEqual(qiitaresult.responseLinks.count, 4)
+                    }else{
+                        XCTAssertEqual(qiitaresult.responseLinks.count, 3)
+                    }
                     print("取り出し成功")
                     self.exp.fulfill()
                 }catch{

@@ -32,6 +32,8 @@ class DetailedViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.showIndicator()
+        self.binding()
         do{
            try self.detailedViewModel.loadWebView(urlString, webView: self.webView)
         }catch{
@@ -47,7 +49,7 @@ extension DetailedViewController{
                 guard let stateOfDetailedViewModel = stateOfDetailedViewModel else{return}
                 switch stateOfDetailedViewModel{
                 case .loading:
-                    self?.showIndicator()
+                    self?.hideIndicator(false)
                 case .loaded:
                     self?.hideIndicator(true)
                 case let .error(message):
@@ -69,7 +71,7 @@ extension DetailedViewController{
         activityIndicator.style = .large
         activityIndicator.color = .gray
         activityIndicator.center = view.center
-        view.addSubview(indicatorBackView)
+        view.addSubview(indicatorBackView) //
         indicatorBackView.addSubview(activityIndicator)
         activityIndicator.startAnimating()
     }

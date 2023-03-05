@@ -8,7 +8,6 @@
 import UIKit
 import Combine
 
-
 class ViewController: UIViewController {
     private var cancellable = Set<AnyCancellable>()
     private let viewModel: ViewModel = .init(model: Model())
@@ -21,6 +20,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
+        self.showIndicator()
         self.binding()
         self.tableView.register(QiitaTableViewCell.nib(), forCellReuseIdentifier: QiitaTableViewCell.id)
     }
@@ -49,6 +49,8 @@ extension ViewController:UITableViewDelegate{
     }
 }
 extension ViewController{
+    
+
     func binding(){
         viewModel.$stateOfViewModel
             .receive(on: DispatchQueue.main)
@@ -56,7 +58,8 @@ extension ViewController{
                 guard let stateOfViewModel = stateOfViewModel else{return}
                 switch stateOfViewModel{
                 case .loading:
-                    self?.showIndicator()
+                    self?.hideIndicator(false)
+//                    self?.showIndicator()
                 case .loaded:
                     self?.apply()
                     self?.hideIndicator(true)
@@ -129,7 +132,7 @@ extension ViewController{
     }
 
     private func hideIndicator(_ isHidden: Bool) {
-        activityIndicator.isHidden = isHidden
         indicatorBackView.isHidden = isHidden
+        activityIndicator.isHidden = isHidden
     }
 }
